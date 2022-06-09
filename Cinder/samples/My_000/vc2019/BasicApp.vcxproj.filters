@@ -1,0 +1,105 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source Files\IO">
+      <UniqueIdentifier>{dd362151-34ff-4ef8-9afa-5041ca7da4cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Id_Generator">
+      <UniqueIdentifier>{88a85f5d-5f4a-42da-80d8-a1d6bbd01525}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cosmos_JsonWriter">
+      <UniqueIdentifier>{6eb4357f-7a27-42de-a313-e79151eb1831}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ShapesManager">
+      <UniqueIdentifier>{812ab776-93ab-4008-87d0-257c705759d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data_Types">
+      <UniqueIdentifier>{d45452bf-bc01-4236-a437-6de506453e78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shaders">
+      <UniqueIdentifier>{0fa4ee28-3940-4fcf-a01a-45c1c87a8264}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Constants">
+      <UniqueIdentifier>{e80d4538-6cc1-4c95-a693-19f4cb44c0ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI_Controller">
+      <UniqueIdentifier>{871fdbdd-18fb-4a48-9a63-031c0a415989}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CosmosApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cosmos_file_IO.cpp">
+      <Filter>Source Files\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="Id_Generator.cpp">
+      <Filter>Source Files\Id_Generator</Filter>
+    </ClCompile>
+    <ClCompile Include="Cosmos_JsonWriter.cpp">
+      <Filter>Source Files\Cosmos_JsonWriter</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapesManger.cpp">
+      <Filter>Source Files\ShapesManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_Types.cpp">
+      <Filter>Source Files\Data_Types</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Controller.cpp">
+      <Filter>Source Files\UI_Controller</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cosmos_file_IO.h">
+      <Filter>Source Files\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="Id_Generator.h">
+      <Filter>Source Files\Id_Generator</Filter>
+    </ClInclude>
+    <ClInclude Include="Cosmos_JsonWriter.h">
+      <Filter>Source Files\Cosmos_JsonWriter</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapesManger.h">
+      <Filter>Source Files\ShapesManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_Types.h">
+      <Filter>Source Files\Data_Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Cosmos_Constants.h">
+      <Filter>Source Files\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Controller.h">
+      <Filter>Source Files\UI_Controller</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="effect.frag">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+    <None Include="passThrough.vert">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>
