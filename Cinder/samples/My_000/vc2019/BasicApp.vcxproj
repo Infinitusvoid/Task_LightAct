@@ -211,6 +211,8 @@ xcopy /y "..\..\..\lib\msw\$(PlatformTarget)\d3dcompiler_46.dll" "$(OutDir)"</Co
     <ClCompile Include="Cosmos_JsonWriter.cpp" />
     <ClCompile Include="Data_Types.cpp" />
     <ClCompile Include="Id_Generator.cpp" />
+    <ClCompile Include="Random.cpp" />
+    <ClCompile Include="Serialization.cpp" />
     <ClCompile Include="ShapesManger.cpp" />
     <ClCompile Include="UI_Controller.cpp" />
   </ItemGroup>
@@ -221,6 +223,8 @@ xcopy /y "..\..\..\lib\msw\$(PlatformTarget)\d3dcompiler_46.dll" "$(OutDir)"</Co
     <ClInclude Include="Cosmos_JsonWriter.h" />
     <ClInclude Include="Data_Types.h" />
     <ClInclude Include="Id_Generator.h" />
+    <ClInclude Include="Random.h" />
+    <ClInclude Include="Serialization.h" />
     <ClInclude Include="ShapesManger.h" />
     <ClInclude Include="UI_Controller.h" />
   </ItemGroup>

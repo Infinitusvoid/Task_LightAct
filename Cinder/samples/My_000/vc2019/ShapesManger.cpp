@@ -168,20 +168,20 @@ void ShapesManger::add_rectangle(float x, float y)
 	
 }
 
-void ShapesManger::walk_the_structure(Cosmos_JsonWriter& json_writer)
-{
-	
-	json_writer.Key("data");
-	json_writer.make_start_array();
-	for (int i = 0; i < obj_list.size(); i++)
-	{
-		//json_writer.Key(std::to_string(i).c_str());
-		json_writer.make_start_object();
-		obj_list[i]->serialize(json_writer);
-		json_writer.make_end_object();
-	}
-	json_writer.make_end_array();
-}
+//void ShapesManger::walk_the_structure(Cosmos_JsonWriter& json_writer)
+//{
+//	
+//	json_writer.Key("data");
+//	json_writer.make_start_array();
+//	for (int i = 0; i < obj_list.size(); i++)
+//	{
+//		//json_writer.Key(std::to_string(i).c_str());
+//		json_writer.make_start_object();
+//		obj_list[i]->serialize(json_writer);
+//		json_writer.make_end_object();
+//	}
+//	json_writer.make_end_array();
+//}
 
 void ShapesManger::create_from_json(std::string path)
 {
@@ -201,15 +201,9 @@ void ShapesManger::create_from_json(std::string path)
 
 void ShapesManger::unselect()
 {
-	//selected = -1;
-
 	sel.id = -1;
 	sel.index = -1;
 }
-
-//
-
-
 
 // -Cosmos_JsonRead
 Cosmos_JsonRead::Cosmos_JsonRead()
@@ -325,7 +319,7 @@ void Cosmos_JsonRead::construct_shapes_from_json(
 bool Cosmos_JsonRead::load(const std::string& path)
 {
 	std::string str;
-	if (Cosmos_file_IO::read_file(path, str))//Cosmos_file_io::read_file(path, str))
+	if (Cosmos_file_IO::read_file(path, str))
 	{
 		std::string json_string = str;
 		if (parse(json_string))
@@ -340,8 +334,6 @@ bool Cosmos_JsonRead::load(const std::string& path)
 
 bool Cosmos_JsonRead::parse(const std::string& json_string)
 {
-	//const char* json = "{\"hello\":\"world\",\"t\":true,\"f\":false,\"n\":null,\"i\":123,\"pi\":3.1416,\"project\":\"rapidjson\",\"stars\":9,\"a\":[0,1,2,3]}";
-
 	const char* json = json_string.c_str();
 
 	document = Document();

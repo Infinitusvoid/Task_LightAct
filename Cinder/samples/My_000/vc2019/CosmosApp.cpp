@@ -1,28 +1,107 @@
-// -cinder
+// Cinder
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "cinder/Shape2d.h"
-#include "cinder/Rand.h"
+//#include "cinder/Rand.h"
 
 
-// -ImGui
+// ImGui
 #include "cinder/CinderImGui.h"
 
 // Cosmos
-#include "Data_Types.h"
-#include "Cosmos_file_IO.h"
-#include "ShapesManger.h"
-#include "Cosmos_Constants.h"
+#include "UI_Controller.h"
+#include "Serialization.h"
+#include "Random.h"
 
-
+// std
 #include <filesystem>
 #include <map>
 
-#include "UI_Controller.h"
+
 
 using namespace ci;
 using namespace ci::app;
+
+
+namespace Shader
+{
+	namespace Helpers
+	{
+		static gl::GlslProgRef create(const char* path_frag, const char* path_vert, const std::string fallback_frag, const std::string fallback_vert)
+		{
+			std::string vert_prog;
+
+			if (Cosmos_file_IO::file_exist(path_vert))
+			{
+				Cosmos_file_IO::read_file(path_vert, vert_prog);
+			}
+			else {
+				vert_prog = fallback_vert;
+			}
+
+			std::string shader_prog;
+			if (Cosmos_file_IO::file_exist(path_frag))
+			{
+				Cosmos_file_IO::read_file(path_frag, shader_prog);
+			}
+			else {
+				shader_prog = fallback_frag;
+			}
+
+			return gl::GlslProg::create(vert_prog, shader_prog);
+		}
+	}
+
+	static void Create(gl::GlslProgRef& prog)
+	{
+		prog = Helpers::create("effect.frag", "passThrough.vert", Constants::Shader::program_frag, Constants::Shader::program_vert);
+	}
+}
+
+namespace Utils
+{
+	void randomizer_radius_and_color_of_circle(const std::unique_ptr<Data_Types::Circle>& circle) {
+		circle->radius = Random::nextFloat(10.0f, 100.0f);//.nextFloat(10.0f, 100.0f);
+		circle->r = Random::rnd_01();// rnd.nextFloat(0.0f, 1.0f);
+		circle->g = Random::rnd_01();// rnd.nextFloat(0.0f, 1.0f);
+		circle->b = Random::rnd_01();// rnd.nextFloat(0.0f, 1.0f);
+	}
+
+	void create_circle_at_position(std::unique_ptr<Data_Types::Circle>& circle, float x, float y)
+	{
+		circle = std::make_unique<Data_Types::Circle>();
+		circle->x = x;
+		circle->y = y;
+	}
+
+	void create_circle_at_position_with_random_direction_vector(std::unique_ptr<Data_Types::Circle>& circle, float x, float y)
+	{
+		circle = std::make_unique<Data_Types::Circle>();
+		circle->x = x;
+		circle->y = y;
+
+
+
+		circle->direction = glm::vec2(Random::nextFloat(-100.0, 100.0), Random::nextFloat(-100.0, 100.0));
+	}
+
+	std::string random_txt()
+	{
+		constexpr int length = 15;
+
+		char arr[length + 1];
+		for (int i = 0; i < length; i++)
+		{
+
+			arr[i] = 97 + Random::nextUint() % 10;
+		}
+		arr[length] = '\0';
+		std::string str = (char*)arr;
+		return str;
+	}
+}
+
 
 class CosmosApp : public App {
 public:
@@ -54,114 +133,23 @@ public:
 	void save_to_file();
 	void load_images_from_disk();
 private:
-	// This will maintain a list of points which we will draw line segments between
-	std::vector<vec2> mPoints;
-
-	Rand rand;
-	//std::vector<Data_Types::Shape> shapes;
+	//Rand rand;
 	
 	double ellapsed_time_past;
 
-	
 	void draw_fbo();
 
 	
 };
 
-namespace Utils
-{
-	void read_shaders_and_create_a_program(gl::GlslProgRef& prog)
-	{
-		std::string vert_prog;
-		if (Cosmos_file_IO::file_exist("passThrough.vert"))
-		{
-			Cosmos_file_IO::read_file("passThrough.vert", vert_prog);
-		}
-		else {
-			vert_prog = Constants::Shader::program_vert;
-		}
-
-		std::string shader_prog;
-		if (Cosmos_file_IO::file_exist("effect.frag"))
-		{
-			Cosmos_file_IO::read_file("effect.frag", shader_prog);
-		}
-		else {
-			shader_prog = Constants::Shader::program_frag;
-		}
-		
-
-		prog = gl::GlslProg::create(vert_prog, shader_prog);
-	}
-
-	void randomizer_radius_and_color_of_circle(Rand& rnd, const std::unique_ptr<Data_Types::Circle>& circle) {
-		circle->radius = rnd.nextFloat(10.0f, 100.0f);
-		circle->r = rnd.nextFloat(0.0f, 1.0f);
-		circle->g = rnd.nextFloat(0.0f, 1.0f);
-		circle->b = rnd.nextFloat(0.0f, 1.0f);
-	}
-
-	void create_circle_at_position(std::unique_ptr<Data_Types::Circle>& circle, float x, float y)
-	{
-		circle = std::make_unique<Data_Types::Circle>();
-		circle->x = x;
-		circle->y = y;
-	}
-
-	void create_circle_at_position_with_random_direction_vector(Rand& rnd, std::unique_ptr<Data_Types::Circle>& circle, float x, float y)
-	{
-		circle = std::make_unique<Data_Types::Circle>();
-		circle->x = x;
-		circle->y = y;
-		circle->direction = glm::vec2(rnd.nextFloat(-100.0f, 100.0f), rnd.nextFloat(-100.0f, 100.0f));
-	}
-
-	std::string random_txt(Rand& rnd)
-	{
-		constexpr int length = 15;
-
-		char arr[length + 1];
-		for (int i = 0; i < length; i++)
-		{
-
-			arr[i] = 97 + rnd.nextUint() % 10;
-		}
-		arr[length] = '\0';
-		std::string str = (char*)arr;
-		return str;
-	}
-
-}
-
 namespace Task
 {
-	void walk(const std::vector<Data_Types::Image_info>& info_images, Cosmos_JsonWriter& json_writer)
-	{
-		namespace JC = Constants::Json_Constants::Img;
-
-		json_writer.Key(JC::info_images);
-		json_writer.make_start_array();
-		
-		for (auto info : info_images)
-		{
-			json_writer.make_start_object();
-
-			json_writer.make(JC::path, info.path.c_str());
-			json_writer.make(JC::enable_color, info.enable_color);
-			json_writer.make(JC::mult_r, info.mult_r);
-			json_writer.make(JC::mult_g, info.mult_g);
-			json_writer.make(JC::mult_b, info.mult_b);
-
-			json_writer.make_end_object();
-		}
-
-		json_writer.make_end_array();
-	}
-
-	void create_randomized_circles(Rand& rand, ShapesManger& manager, const float x, const float y) {
+	void create_randomized_circles(ShapesManger& manager, const float x, const float y) {
 		std::unique_ptr<Data_Types::Circle> circle;
-		Utils::create_circle_at_position_with_random_direction_vector(rand, circle, x, y);
-		Utils::randomizer_radius_and_color_of_circle(rand, circle);
+
+
+		Utils::create_circle_at_position_with_random_direction_vector(circle, x, y);
+		Utils::randomizer_radius_and_color_of_circle(circle);
 		manager.obj_list.push_back(std::move(circle));
 	}
 
@@ -374,13 +362,13 @@ void prepareSettings(CosmosApp::Settings* settings)
 
 void CosmosApp::setup()
 {
-	rand = Rand();
-
+	
 	ImGui::Initialize();
 
 	ellapsed_time_past = 0.0;
 
-	Utils::read_shaders_and_create_a_program(m_shader_prog);
+	Shader::Create(m_shader_prog);
+	//Utils::read_shaders_and_create_a_program(m_shader_prog);
 }
 
 
@@ -393,7 +381,7 @@ void CosmosApp::mouseDown(MouseEvent event)
 
 	if (event.isLeft())
 	{
-		Task::create_randomized_circles(rand, manager, pos.x, pos.y);
+		Task::create_randomized_circles(manager, pos.x, pos.y);
 	}
 
 	if (event.isRight())
@@ -406,7 +394,7 @@ void CosmosApp::mouseDown(MouseEvent event)
 void CosmosApp::mouseDrag(MouseEvent event)
 {
 	// Store the current mouse position in the list.
-	mPoints.push_back(event.getPos());
+	
 }
 
 void CosmosApp::keyDown(KeyEvent event)
@@ -418,7 +406,7 @@ void CosmosApp::keyDown(KeyEvent event)
 	}
 	else if (event.getCode() == KeyEvent::KEY_SPACE) {
 		// Clear the list of points when the user presses the space bar.
-		mPoints.clear();
+		
 	}
 	else if (event.getCode() == KeyEvent::KEY_ESCAPE) {
 		// Exit full screen, or quit the application, when the user presses the ESC key.
@@ -465,16 +453,12 @@ void CosmosApp::keyDown(KeyEvent event)
 void CosmosApp::save_to_file()
 {
 	// -String generation
-	Cosmos_JsonWriter e;
-	e.make_start_object();
-	Task::walk(manager.info_images_list, e);
-	manager.walk_the_structure(e);
-	e.make_end_object();
+	Serialization s;
 	std::string str;
-	e.generate_string(str);
-
+	s.run(manager).get_string(str);
+	
 	// -File rename, File_write
-	std::string unique_name = Constants::FilePaths::path_base + Utils::random_txt(rand) + ".json";
+	std::string unique_name = Constants::FilePaths::path_base + Utils::random_txt() + ".json";
 	Cosmos_file_IO::rename_file_if_exist(
 		Constants::FilePaths::path.c_str(),
 		unique_name.c_str()

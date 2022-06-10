@@ -13,7 +13,6 @@
 #include <string>
 #include <memory>
 
-
 class ShapesManger
 {
 public:
@@ -41,7 +40,7 @@ public:
 	//RemoveObjectId(id) 
 	//CreateCircle(const CircleInfo& info);
 
-	void walk_the_structure(Cosmos_JsonWriter& json_writer);
+	//void walk_the_structure(Cosmos_JsonWriter& json_writer);
 
 	void ShapesManger::create_from_json(std::string path);
 

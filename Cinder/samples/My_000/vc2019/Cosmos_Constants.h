@@ -6,7 +6,9 @@ namespace Constants
 {
 	namespace FilePaths
 	{
-		const std::string path_base = "";//"C:\\Users\\CosmosXYZ\\Desktop\\File_out\\"; //TODO remove this before ending the project!
+		const std::string path_base = ""; 
+		
+
 		const std::string path_file_name = "project.json"; //TODO : has to be for project
 		const std::string path = path_base + path_file_name;
 	}
