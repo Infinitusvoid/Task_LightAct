@@ -7,7 +7,6 @@ namespace Constants
 	namespace FilePaths
 	{
 		const std::string path_base = ""; 
-		
 
 		const std::string path_file_name = "project.json"; //TODO : has to be for project
 		const std::string path = path_base + path_file_name;

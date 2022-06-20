@@ -211,10 +211,14 @@ xcopy /y "..\..\..\lib\msw\$(PlatformTarget)\d3dcompiler_46.dll" "$(OutDir)"</Co
     <ClCompile Include="Cosmos_JsonWriter.cpp" />
     <ClCompile Include="Data_Types.cpp" />
     <ClCompile Include="Id_Generator.cpp" />
+    <ClCompile Include="Image_Presenter.cpp" />
+    <ClCompile Include="Info.cpp" />
     <ClCompile Include="Random.cpp" />
-    <ClCompile Include="Serialization.cpp" />
-    <ClCompile Include="ShapesManger.cpp" />
+    <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="ShapesFactory.cpp" />
+    <ClCompile Include="Texture_controller.cpp" />
     <ClCompile Include="UI_Controller.cpp" />
+    <ClCompile Include="UI_List.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h" />
@@ -223,10 +227,14 @@ xcopy /y "..\..\..\lib\msw\$(PlatformTarget)\d3dcompiler_46.dll" "$(OutDir)"</Co
     <ClInclude Include="Cosmos_JsonWriter.h" />
     <ClInclude Include="Data_Types.h" />
     <ClInclude Include="Id_Generator.h" />
+    <ClInclude Include="Image_Presenter.h" />
+    <ClInclude Include="Info.h" />
     <ClInclude Include="Random.h" />
-    <ClInclude Include="Serialization.h" />
-    <ClInclude Include="ShapesManger.h" />
+    <ClInclude Include="Manager.h" />
+    <ClInclude Include="ShapesFactory.h" />
+    <ClInclude Include="Texture_controller.h" />
     <ClInclude Include="UI_Controller.h" />
+    <ClInclude Include="UI_List.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

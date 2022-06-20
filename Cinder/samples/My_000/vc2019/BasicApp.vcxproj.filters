@@ -21,9 +21,6 @@
     <Filter Include="Source Files\Cosmos_JsonWriter">
       <UniqueIdentifier>{6eb4357f-7a27-42de-a313-e79151eb1831}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ShapesManager">
-      <UniqueIdentifier>{812ab776-93ab-4008-87d0-257c705759d7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Data_Types">
       <UniqueIdentifier>{d45452bf-bc01-4236-a437-6de506453e78}</UniqueIdentifier>
     </Filter>
@@ -39,6 +36,18 @@
     <Filter Include="Source Files\Random">
       <UniqueIdentifier>{f05b6030-08c5-4eb0-b634-8f7bba5d3156}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Image_presenter">
+      <UniqueIdentifier>{a439421d-dbb0-463e-a6b6-96ba1edaeb51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Manager">
+      <UniqueIdentifier>{812ab776-93ab-4008-87d0-257c705759d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ShapesFactory">
+      <UniqueIdentifier>{7b194484-2b4c-4dbc-b6e2-826383ee45fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI_List">
+      <UniqueIdentifier>{0001c4eb-1b78-4ed2-afa8-d212e87d7738}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CosmosApp.cpp">
@@ -53,8 +62,8 @@
     <ClCompile Include="Cosmos_JsonWriter.cpp">
       <Filter>Source Files\Cosmos_JsonWriter</Filter>
     </ClCompile>
-    <ClCompile Include="ShapesManger.cpp">
-      <Filter>Source Files\ShapesManager</Filter>
+    <ClCompile Include="Manager.cpp">
+      <Filter>Source Files\Manager</Filter>
     </ClCompile>
     <ClCompile Include="Data_Types.cpp">
       <Filter>Source Files\Data_Types</Filter>
@@ -62,11 +71,23 @@
     <ClCompile Include="UI_Controller.cpp">
       <Filter>Source Files\UI_Controller</Filter>
     </ClCompile>
-    <ClCompile Include="Serialization.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Random.cpp">
       <Filter>Source Files\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="Info.cpp">
+      <Filter>Source Files\Image_presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="Image_Presenter.cpp">
+      <Filter>Source Files\Image_presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture_controller.cpp">
+      <Filter>Source Files\Image_presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapesFactory.cpp">
+      <Filter>Source Files\ShapesFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_List.cpp">
+      <Filter>Source Files\UI_List</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -85,8 +106,8 @@
     <ClInclude Include="Cosmos_JsonWriter.h">
       <Filter>Source Files\Cosmos_JsonWriter</Filter>
     </ClInclude>
-    <ClInclude Include="ShapesManger.h">
-      <Filter>Source Files\ShapesManager</Filter>
+    <ClInclude Include="Manager.h">
+      <Filter>Source Files\Manager</Filter>
     </ClInclude>
     <ClInclude Include="Data_Types.h">
       <Filter>Source Files\Data_Types</Filter>
@@ -97,11 +118,23 @@
     <ClInclude Include="UI_Controller.h">
       <Filter>Source Files\UI_Controller</Filter>
     </ClInclude>
-    <ClInclude Include="Serialization.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Random.h">
       <Filter>Source Files\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="Info.h">
+      <Filter>Source Files\Image_presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="Image_Presenter.h">
+      <Filter>Source Files\Image_presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture_controller.h">
+      <Filter>Source Files\Image_presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapesFactory.h">
+      <Filter>Source Files\ShapesFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_List.h">
+      <Filter>Source Files\UI_List</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
